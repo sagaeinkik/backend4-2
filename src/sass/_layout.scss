@@ -5,7 +5,6 @@ body {
 }
 
 h1 {
-    animation: fadeIn 3s ease;
     font-size: 1.9em;
     color: a.$dark;
 }
@@ -38,4 +37,17 @@ nav {
             margin-right: 3em;
         }
     }
+}
+
+div.quote {
+    font-family: a.$cursive;
+    font-style: italic;
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    animation: delayFadeIn 6s ease;
+    color: a.$peach;
+    max-width: 35em;
+    letter-spacing: 0.7;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
 }

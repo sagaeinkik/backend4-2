@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
 
 $exo: Exo, Arial, Helvetica, sans-serif;
+$cursive: 'DM Serif Display', 'Times New Roman', Georgia, serif;
 
 $peach: #ffc7c9;
 $blue: #302e41;
@@ -17,6 +18,18 @@ $dark: #1f1d2b;
         opacity: 0;
     }
     30% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes delayFadeIn {
+    0% {
+        opacity: 0;
+    }
+    70% {
         opacity: 0;
     }
     100% {
