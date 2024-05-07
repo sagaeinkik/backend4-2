@@ -1,0 +1,28 @@
+@use 'assets' as a;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 2000px;
+    width: 100%;
+    margin: auto;
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-family: a.$exo;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}

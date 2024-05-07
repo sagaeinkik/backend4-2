@@ -1,0 +1,41 @@
+@use 'assets' as a;
+body {
+    background: url(../assets/mountain.svg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+h1 {
+    animation: fadeIn 3s ease;
+    font-size: 1.9em;
+    color: a.$dark;
+}
+
+nav {
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    margin: 2em auto;
+
+    ul {
+        display: flex;
+
+        li {
+            font-size: 1.3em;
+
+            a {
+                color: a.$dark;
+                padding: 0.5em 1em;
+                border-radius: 15px;
+                @include a.transition;
+
+                &:hover {
+                    color: a.$peach;
+                    background-color: a.$blue;
+                }
+            }
+        }
+        li:first-child {
+            margin-right: 3em;
+        }
+    }
+}
