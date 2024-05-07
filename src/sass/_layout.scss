@@ -45,9 +45,81 @@ div.quote {
     position: absolute;
     bottom: 20%;
     left: 10%;
-    animation: delayFadeIn 6s ease;
+    animation: delayFadeIn 4s ease;
     color: a.$peach;
     max-width: 35em;
     letter-spacing: 0.7;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+}
+
+//Ruta för inloggning/registrering
+div.box {
+    min-height: 600px;
+    background-color: rgba(32, 33, 55, 0.6);
+    border-radius: 30px;
+    width: 50%;
+    min-width: 400px;
+    margin: auto;
+    padding: 1em;
+    border: 1px solid rgba(232, 206, 232, 0.5);
+    backdrop-filter: blur(5px);
+    margin-top: 10%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+    h2 {
+        color: white;
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        font-size: 1.8em;
+        font-weight: 500;
+    }
+
+    div.info {
+        width: 80%;
+        margin: 2em auto 0;
+
+        span.error {
+            color: rgb(255, 137, 137);
+            display: block;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        label {
+            display: block;
+            color: white;
+        }
+        input {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            border: none;
+            border-bottom: 1.5px solid a.$peach;
+            margin-bottom: 4em;
+            padding: 0.5em 0.3em 0.3em;
+            font-size: 1em;
+            color: a.$peach;
+            font-family: a.$exo;
+        }
+
+        button {
+            background-color: a.$blue;
+            font-family: a.$exo;
+            padding: 1em 1.5em;
+            font-size: 1em;
+            color: white;
+            position: relative;
+            left: 50%;
+            top: 2em;
+            transform: translateX(-50%);
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            @include a.transition;
+
+            &:hover {
+                color: a.$peach;
+            }
+        }
+    }
 }
