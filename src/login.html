@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logga in</title>
     <link rel="stylesheet" href="sass/main.scss">
+    <script src="js/login.js" type="module"></script>
 </head>
 
 <body>
     <div class="wrapper">
-
+        <a href="userpage.html" id="force-build"></a>
         <header>
             <nav>
                 <h1><a href="index.html">Välkommen hem</a></h1>
@@ -25,11 +26,13 @@
                 <h2>Logga in</h2>
                 <div class="info">
                     <span class="error"></span>
-                    <label for="username">Användarnamn:</label>
-                    <input type="text" name="username" id="username">
-                    <label for="password">Lösenord:</label>
-                    <input type="password" name="password" id="password">
-                    <button class="action">Logga in</button>
+                    <form>
+                        <label for="username">Användarnamn:</label>
+                        <input type="text" name="username" id="username">
+                        <label for="password">Lösenord:</label>
+                        <input type="password" name="password" id="password">
+                        <button class="action">Logga in</button>
+                    </form>
                 </div> <!-- Slut på info -->
             </div> <!-- Slut på box -->
         </main>

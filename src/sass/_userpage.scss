@@ -1,0 +1,47 @@
+@use 'assets' as a;
+
+#userpage {
+    background-color: a.$dark;
+    background-image: none;
+}
+
+nav.protectedpage {
+    display: flex;
+    justify-content: end;
+    .logout {
+        font-family: a.$exo;
+        font-size: 1em;
+        border: 1px solid a.$peach;
+        padding: 0.8em 1.2em;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        cursor: pointer;
+        @include a.transition;
+
+        &:hover {
+            background-color: a.$blue;
+            border-radius: 15px;
+        }
+    }
+}
+
+div.welcome {
+    width: 70%;
+    background-color: a.$blue;
+    margin: 4em auto;
+    color: a.$peach;
+    padding: 2em;
+    border-radius: 30px;
+    border: 1px solid a.$peach;
+    text-align: center;
+
+    img {
+        display: block;
+        margin: 3em auto;
+        width: 30%;
+    }
+    p {
+        max-width: 35em;
+        margin: auto;
+    }
+}
