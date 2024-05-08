@@ -21,3 +21,7 @@ För att skapa en ny användare måste man följa reglerna som finns definierade
 På den skyddade sidan finns en logga ut-knapp, som tar bort lagringen av jsonwebtoken och därmed låser ner den skyddade sidan från åtkomst utan inloggning igen.
 
 Om man från den skyddade sidan manuellt går till startsidan, och trycker på Mina Sidor därifrån, kommer man direkt in på userpage.html.
+
+## Publikation
+
+Sidan ligger uppe på https://backend4-sek.netlify.app/ för den nyfikna.
