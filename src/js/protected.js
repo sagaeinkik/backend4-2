@@ -1,14 +1,47 @@
 'use strict';
+import duckImg from '../assets/duck.svg';
 
-const logoutBtn = document.querySelector('.logout');
-
-window.addEventListener('load', checkUser);
+document.addEventListener('DOMContentLoaded', checkUser);
 
 function checkUser() {
     const tokenCookie = getCookie('jwt=');
     if (!tokenCookie) {
         window.location = 'login.html';
     } else {
+        // Skapa nav
+        const nav = document.createElement('nav');
+        nav.classList.add('protectedpage');
+        // Skapa logga ut-knapp
+        const logoutBtn = document.createElement('button');
+        logoutBtn.classList.add('logout');
+        logoutBtn.textContent = 'Logga ut';
+        //Lägg till i meny
+        nav.appendChild(logoutBtn);
+
+        // Skapa bilden
+        const img = document.createElement('img');
+        img.src = duckImg;
+        img.setAttribute('alt', 'Isometrisk bild av en anka');
+
+        // Skapa välkomstdelen
+        const welcomeDiv = document.createElement('div');
+        welcomeDiv.classList.add('welcome');
+        const h1 = document.createElement('h1');
+        h1.textContent = 'Välkommen Namn';
+        const p = document.createElement('p');
+        p.textContent =
+            'Det här ska vara en skyddad sida som man bara kommer åt om man är registrerad som användare och inloggad.';
+        welcomeDiv.appendChild(img);
+        welcomeDiv.appendChild(h1);
+        welcomeDiv.appendChild(p);
+
+        // Hämta wrapper-elementet och lägg till navigationsmenyn och välkomstdelen
+        const wrapper = document.querySelector('div.wrapper');
+        wrapper.innerHTML = ''; // Rensa eventuellt befintligt innehåll
+        wrapper.appendChild(nav);
+        wrapper.appendChild(welcomeDiv);
+
+        // Lägg till eventlyssnare för logga ut-knappen
         logoutBtn.addEventListener('click', logoutUser);
     }
 }
