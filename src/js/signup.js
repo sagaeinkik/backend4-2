@@ -2,43 +2,47 @@
 
 //Variabler
 const form = document.querySelector('form');
-const button = document.querySelector('button');
-const errorSpan = document.querySelector('span.error');
+const button = document.querySelector('button.action');
 const apiUrl = 'https://loginapi-saz1.onrender.com/';
+const spanError = document.querySelector('span.error');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    loginUser();
+    createAccount();
 });
 
-async function loginUser() {
-    errorSpan.textContent = '';
-    button.textContent = 'Loggar in...';
+async function createAccount() {
+    spanError.textContent = '';
+    //Formulärvärden
+    let username = document.getElementById('username').value;
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
 
-    //Värden
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    //Fetchanrop till post /login
+    //Fetch POST till /signup
     try {
-        const response = await fetch(apiUrl + 'login', {
+        spanError.textContent = '';
+        button.textContent = 'Skapar konto...';
+
+        const response = await fetch(apiUrl + 'signup', {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
-            headers: { 'Content-type': 'application/json' },
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({ username, email, password }),
         });
         const data = await response.json();
-        //Kolla vad vi fick för meddelanden, skriv ut till span.error om error
 
         if (data.errors) {
-            errorSpan.textContent = data.errors.message;
-            button.textContent = 'Logga in';
-            //Avsluta funktion
+            spanError.textContent = data.errors.message;
+            button.textContent = 'Skapa konto';
             return;
         }
-        //Ta token, peta in den i en cookie och lagra i 1h (token går ut efter 1 timme)
-        const token = data.token;
-        document.cookie = `jwt=${token}; max-age=3600; path=/;`;
 
+        //Skapa token och peta in i cookie
+        const token = data.token;
+        document.cookie = `jwt=${token}; max-ag=3600; path=/;`;
+
+        //Gör fetchanrop för att logga in
         // Gör ett fetch-anrop till den skyddade routen med JWT-token
         const protectedResponse = await fetch(apiUrl + 'protected', {
             method: 'GET',
@@ -55,10 +59,9 @@ async function loginUser() {
         } else {
             // Visa felmeddelande annars, skicka tillbaks till logga in
             errorSpan.textContent = 'Felaktig token';
-            button.textContent = 'Logga in';
         }
     } catch (error) {
-        console.error(error);
-        errorSpan.textContent = `Något gick fel: ${error}`;
+        spanError.textContent = error;
+        console.log('Fel: ' + error);
     }
 }

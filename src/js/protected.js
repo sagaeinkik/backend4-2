@@ -8,6 +8,10 @@ function checkUser() {
     if (!tokenCookie) {
         window.location = 'login.html';
     } else {
+        //Hämta namnet från sessionStorage
+        let username = sessionStorage.getItem('username');
+        //Ta bort citattecken
+        username = username.replace(/^"(.*)"$/, '$1');
         // Skapa nav
         const nav = document.createElement('nav');
         nav.classList.add('protectedpage');
@@ -27,7 +31,7 @@ function checkUser() {
         const welcomeDiv = document.createElement('div');
         welcomeDiv.classList.add('welcome');
         const h1 = document.createElement('h1');
-        h1.textContent = 'Välkommen Namn';
+        h1.textContent = 'Välkommen ' + username;
         const p = document.createElement('p');
         p.textContent =
             'Det här ska vara en skyddad sida som man bara kommer åt om man är registrerad som användare och inloggad.';
@@ -54,6 +58,8 @@ function getCookie(cookieName) {
 function logoutUser() {
     //ändra cookiens expiration-date till redan passerat datum
     document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    //Töm session Storage
+    sessionStorage.clear();
     //Skicka till startsida
     window.location.href = 'index.html';
 }
