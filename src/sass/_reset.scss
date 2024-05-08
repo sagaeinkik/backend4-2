@@ -17,9 +17,14 @@ body {
 
 html,
 body {
-    height: 100%;
+    height: 95%;
 }
 
+.wrapper {
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
 a {
     text-decoration: none;
 }
