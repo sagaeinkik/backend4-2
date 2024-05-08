@@ -38,3 +38,9 @@
         min-width: 95%;
     }
 }
+
+@media (max-width: 330px) {
+    #userpage h1 {
+        font-size: 1.5em;
+    }
+}

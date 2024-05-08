@@ -1,14 +1,18 @@
 @use 'assets' as a;
+
+//Bakgrundsbild
 body {
     background: url(../assets/mountain.svg) no-repeat center center fixed;
     background-size: cover;
 }
 
+//Välkommen hem
 h1 a {
     font-size: 1.5em;
     color: a.$dark;
 }
 
+//Navigering
 nav {
     display: flex;
     width: 95%;
@@ -42,13 +46,14 @@ nav {
     }
 }
 
+//Inspirerande citat på startsidan
 div.quote {
     font-family: a.$cursive;
     font-style: italic;
     position: absolute;
     bottom: 20%;
     left: 10%;
-    animation: delayFadeIn 4s ease;
+    animation: delayFadeIn 3s ease;
     color: a.$peach;
     max-width: 35em;
     letter-spacing: 0.7;
@@ -57,8 +62,6 @@ div.quote {
 
 //Ruta för inloggning/registrering
 div.box {
-    min-height: 600px;
-    /* background-color: rgba(32, 33, 55, 0.4); */
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 30px;
     width: 50%;
@@ -79,6 +82,7 @@ div.box {
         font-weight: 500;
     }
 
+    //Själva innehållet
     div.info {
         width: 80%;
         margin: 2em auto 0;

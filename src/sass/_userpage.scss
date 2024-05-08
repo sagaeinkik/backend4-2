@@ -1,10 +1,12 @@
 @use 'assets' as a;
 
+//Mörk bakgrund istället för bakgrundsbild
 #userpage {
     background-color: a.$dark;
     background-image: none;
 }
 
+//Logga ut-knapp
 nav.protectedpage {
     display: flex;
     justify-content: end;
@@ -25,6 +27,7 @@ nav.protectedpage {
     }
 }
 
+//Välkomsttext, genereras med JavaScript
 div.welcome {
     width: 70%;
     background-color: a.$blue;

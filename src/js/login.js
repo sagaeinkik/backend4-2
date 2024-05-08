@@ -48,7 +48,7 @@ async function loginUser() {
         });
         const protectedData = await protectedResponse.json();
 
-        // Om svaret från den skyddade routen är OK, dirigera användaren till skyddad sida
+        // Om svaret är access granted, skicka till userpage
         if (protectedData.message === 'Access granted') {
             sessionStorage.setItem('username', JSON.stringify(protectedData.username.username));
             location.href = 'userpage.html';

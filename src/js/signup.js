@@ -33,7 +33,8 @@ async function createAccount() {
         const data = await response.json();
 
         if (data.errors) {
-            spanError.textContent = data.errors.message;
+            //Skriv ut alla error till skärmen om de finns
+            spanError.textContent = data.errors.join(', ');
             button.textContent = 'Skapa konto';
             return;
         }
@@ -43,7 +44,6 @@ async function createAccount() {
         document.cookie = `jwt=${token}; max-ag=3600; path=/;`;
 
         //Gör fetchanrop för att logga in
-        // Gör ett fetch-anrop till den skyddade routen med JWT-token
         const protectedResponse = await fetch(apiUrl + 'protected', {
             method: 'GET',
             headers: {
@@ -52,13 +52,14 @@ async function createAccount() {
         });
         const protectedData = await protectedResponse.json();
 
-        // Om svaret från den skyddade routen är OK, dirigera användaren till skyddad sida
+        // Om svaret är access granted, skicka till userpage
         if (protectedData.message === 'Access granted') {
             sessionStorage.setItem('username', JSON.stringify(protectedData.username.username));
             location.href = 'userpage.html';
         } else {
             // Visa felmeddelande annars, skicka tillbaks till logga in
-            errorSpan.textContent = 'Felaktig token';
+            spanError.textContent = 'Felaktig token';
+            button.textContent = 'Skapa konto';
         }
     } catch (error) {
         spanError.textContent = error;
